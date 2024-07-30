@@ -16,7 +16,7 @@ function Product (){
     }
 
     return(
-        <div className="overflow-auto h-screen">
+        <div className="overflow-y-scroll overflow-x-clip h-screen">
         <Nav></Nav>
         <button className="bg-transparent mx-10 mt-20 p-2" onClick={handleClick}> &lt; Back</button>
         <main className="rounded-xl p-3 mx-10 flex flex-row " style={{ backgroundImage: "linear-gradient(to top, #f46c45, #eea749)" }}>

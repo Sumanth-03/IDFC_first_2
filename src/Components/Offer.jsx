@@ -35,7 +35,7 @@ function Offer (){
     return(
         <>
         <Nav></Nav>
-        <div className="overflow-scroll">
+        <div className="overflow-y-scroll overflow-x-clip">
         <div className="flex flex-row justify-between mt-20">
             <button onClick={handleClickBack} className="text-lg font-bold bg-transparent flex flex-row m-2" >
             <span className="text-xl mx-2">&lt;</span>
