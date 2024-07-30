@@ -27,7 +27,7 @@ function Product (){
                 <img src={copy} className="ml-auto p-2"></img>
             </div>
             <h1 className="text-lg font-bold text-white m-10">Vali till: 24 Mar 2024</h1>
-            <button className="p-5 bg-white text-turtiary font-bold rounded-xl px-10 mx-10 mb-6" onClick={()=>{window.open("https://myntra.com")}}>REDEEM NOW</button>
+            <button className="p-5 bg-white text-turtiary font-bold rounded-xl px-10 mx-10 mb-6" onClick={()=>{window.open("https://www.swiggy.com")}}>REDEEM NOW</button>
             </div>
             <div className="w-1/2 relative">
             <img src={Delevery} className="absolute bottom-0 h-full" />
