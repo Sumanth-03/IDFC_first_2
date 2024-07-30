@@ -133,7 +133,7 @@ function Home (){
 
 
     return(
-        <div className="overflow-scroll h-screen flex flex-col md:flex-row">
+        <div className="overflow-y-scroll overflow-x-clip h-screen flex flex-col md:flex-row">
              {isloading && <div className="spinner-overlay z-30">
           <div className="spinner-container">
           <Spinner  size="lg" classNames={{circle1: "border-b-[#27374D]"  }}/>
@@ -161,7 +161,7 @@ function Home (){
             <div className="w-full md:w-1/2 text-center mt-80 md:mt-0">
                 <h1 className="text-2xl font-bold text-primary m-5">Unlock Your Activation Benefits!</h1>
                 <div className="bg-secondary font-medium text-lg py-4 px-10 m-5 rounded-xl">As per RBI guidelines, activate your card within 1 st 30 days to avoid card closure.</div>
-                <main>
+                <main className="h-screen">
                     <div className="p-4 m-4 flex flex-row border border-gray-400 rounded-xl shadow-md">
                         <div className="w-80"><img src={Swiggy} className="h-7 ml-2"></img></div>
                         <sapn className=''>12 Free Deliveries</sapn>
@@ -196,6 +196,7 @@ function Home (){
                               Unlock for only ₹ 1
                         </button>
                     </div>
+                    <div className="py-20"></div>
                 </main>
             </div>
             <Dialog open={open} handler={handleOpen} size={'xs'} className="flex flex-col justify-center">
