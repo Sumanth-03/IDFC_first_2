@@ -56,22 +56,22 @@ function Offer (){
             <div className="p-4 m-2 flex flex-row border border-gray-400 rounded-xl shadow-md  ">
             <div className="w-80"><img src={Zepto} className="h-7 ml-2"></img></div>
                 <sapn className=''>3 Month Subscription</sapn>
-                <button className="border border-primary text-primary bg-white font-bold px-6 p-2 rounded-lg ml-auto">Redeem</button>
+                <button className="border border-primary text-primary bg-white font-bold px-6 p-2 rounded-lg ml-auto" onClick={()=>handleClick('Swiggy')}>Redeem</button>
             </div>
             <div className="p-4 m-2 flex flex-row border border-gray-400 rounded-xl shadow-md  ">
             <div className="w-80"><img src={Youtube} className="h-7 ml-2"></img></div>
                 <sapn className=''>2 Month Subscription</sapn>
-                <button className="border border-primary text-primary bg-white font-bold px-6 p-2 rounded-lg ml-auto">Redeem</button>
+                <button className="border border-primary text-primary bg-white font-bold px-6 p-2 rounded-lg ml-auto" onClick={()=>handleClick('Swiggy')}>Redeem</button>
             </div>
             <div className="p-4 m-2 flex flex-row border border-gray-400 rounded-xl shadow-md  ">
             <div className="w-80"><img src={Audible} className="h-7 ml-2"></img></div>
                 <sapn className=''>2 Month Subscription</sapn>
-                <button className="border border-primary text-primary bg-white font-bold px-6 p-2 rounded-lg ml-auto">Redeem</button>
+                <button className="border border-primary text-primary bg-white font-bold px-6 p-2 rounded-lg ml-auto" onClick={()=>handleClick('Swiggy')}>Redeem</button>
             </div>
             <div className="p-4 m-2 flex flex-row border border-gray-400 rounded-xl shadow-md  ">
             <div className="w-80"><img src={Netmeds} className="h-7 ml-2"></img></div>
                 <sapn className=''>6 Free Deliveries</sapn>
-                <button className="border border-primary text-primary bg-white font-bold px-6 p-2 rounded-lg ml-auto">Redeem</button>
+                <button className="border border-primary text-primary bg-white font-bold px-6 p-2 rounded-lg ml-auto" onClick={()=>handleClick('Swiggy')}>Redeem</button>
             </div>
             <button className="float-end m-10 p-2 text-white bg-primary rounded-xl text-xl font-bold px-6" onClick={handleOpen}>
                 Send to my email

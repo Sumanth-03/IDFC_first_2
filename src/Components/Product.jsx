@@ -12,7 +12,7 @@ function Product (){
 
     const navigate = useNavigate();
     function handleClick () {
-        navigate('/')
+        navigate('/offers')
     }
 
     return(
