@@ -147,12 +147,12 @@ function Home (){
                 </div>
                 <div className="w-full">
                 <div
-                    className="relative h-[120%] w-[113%]"
+                    className="relative h-[120%] w-[114%]"
                 >
                 <img
                     src={Poster}
                     alt="poster"
-                    className="absolute -top-20"
+                    className="absolute -top-32 pr-1"
                 />
                  </div>
                 </div>

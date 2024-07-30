@@ -21,7 +21,7 @@ import Mail from '../Assets/Mail.svg'
 function Offer (){
     const navigate = useNavigate()
 
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = React.useState(true);
 
     const handleOpen = () => setOpen(!open); 
     const handleClick = (data) =>{
@@ -94,7 +94,7 @@ function Offer (){
                     variant="text"
                     className="bg-primary m-auto"
                 >
-                    <span className="text-white font-medium mx-4">Send Discout Codes</span>
+                    <span className="text-white font-medium mx-4" onClick={()=>setOpen(false)}>Send Discout Codes</span>
                 </Button>
                 </DialogFooter>
             </Dialog>
