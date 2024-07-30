@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom";
 
 import {
@@ -7,6 +7,7 @@ import {
     DialogHeader,
     DialogBody,
     DialogFooter,
+    Spinner
   } from "@material-tailwind/react";
 
 import Logo from '../Assets/Logo.svg'
@@ -20,24 +21,125 @@ import Special from '../Assets/Special.svg'
 import Lock from '../Assets/Lock.svg'
 import dailogBg from '../Assets/Dailog_bg.svg'
 import play from '../Assets/Play-Pause.svg'
-import { useEffect } from "react";
+import "./style.css"
+import { makeApiCallGet, makeApiCall, makeApiCallWithAuth, makeApiGetCallWithAuth } from '../Services/Api' 
 
 function Home (){
     const navigate = useNavigate()
-    const [open, setOpen] = React.useState(false);
-    const [pinSet, setPinSet] = React.useState(false);
+    const [open, setOpen] = useState(false);
+    const [pinSet, setPinSet] = useState(false);
 
-    const handlePinSet = ()=>{setPinSet((!pinSet))}
+    const [isloading, setIsloading] = useState(false);
+    const [modal, setModal] = useState('')
+    const [errmessage, setErrmessage] = useState('')
+
+    
     const handleOpen = () => setOpen(!open); 
 
-    useEffect(()=>{
-        if(pinSet){
-            navigate('/offers')
+    const queryParams = new URLSearchParams(window.location.search);
+    const hdnRefNumber = queryParams.get('hdnRefNumber');
+    const transactionId = queryParams.get('transactionId');
+    const amount = queryParams.get('amount');
+
+    if(hdnRefNumber && !modal && !isloading){
+        setIsloading(true);
+        let data ={
+          order_id: hdnRefNumber,
+          razorpay_payment_id: transactionId,
+          razorpay_amount: "1",//amount,
+          offer_id: "179",
         }
-    },[pinSet])
+        makeApiCallWithAuth('checkPaymentStatus', data)
+        .then((response) => {
+          console.log("getpayres",response.data)
+          if(response?.data?.status === 200 || response?.data?.status === 201){
+            //sessionStorage.setItem('coupon',JSON.stringify(response.data.data))
+            //navigate('/redeem')
+            setModal('success');
+            setIsloading(false);
+            navigate('/offers');
+            //setEnabled(true)
+            //setBtntext(true)
+          
+          }
+          else{
+            if(!modal){
+            setModal('failed')
+            setErrmessage(response.data?.message)
+            setIsloading(false);
+            }
+          }
+    
+        })
+        .catch((e) => {console.log("err", e); setModal('failed');setIsloading(false);})
+    
+        
+       }
+
+    useEffect(() => {
+        if(!hdnRefNumber){
+        makeApiCallGet()
+        .then((response) => {
+          console.log("tok",response.data)
+          if (response.data?.result) {
+            sessionStorage.setItem('token', response.data?.result)
+          }
+
+        })
+        .catch((e) => {console.log("err", e); })
+       }
+
+    },[]);
+
+    const handlePay = ()=>{
+        setOpen(false)
+        setIsloading(true);
+    makeApiCallWithAuth('validationCheck',{mop: 4, offer_id: "179"})
+    .then((response) => {
+      console.log(response?.data?.data?.url)
+      if(response?.data?.data?.url){
+        let paymenturl = response.data.data.url;
+        setIsloading(false);
+        window.location.href = paymenturl;
+        }
+      else if(response?.data?.data?.errorstring === "Failed"){
+        setIsloading(false);
+        if(!modal){
+          setModal('failed')
+          setErrmessage('Something Went Wrong')
+          //setIsloading(false);
+          }
+      
+      }
+      else if(response?.data?.status === 200){
+        sessionStorage.setItem('coupon',JSON.stringify(response.data.data))
+        setIsloading(false);
+        navigate('/redeem')
+      }
+      else{
+        setIsloading(false);
+        if(!modal){
+          setModal('failed')
+          setErrmessage(response.data?.message)
+          //setIsloading(false);
+          }
+      }
+       
+    })
+    .catch((e) => {console.log("err", e);setIsloading(false);})
+   
+
+    }
+
 
     return(
         <div className="overflow-scroll h-screen flex flex-col md:flex-row">
+             {isloading && <div className="spinner-overlay z-30">
+          <div className="spinner-container">
+          <Spinner  size="lg" classNames={{circle1: "border-b-[#27374D]"  }}/>
+          </div>
+          
+         </div>}
             <div className="w-full md:w-1/2 flex flex-col gap-6 md:h-screens">
                 <div className="w-full bg-primary">
                     <img src={Logo} alt='logo' className="h-14"></img>
@@ -108,10 +210,10 @@ function Home (){
                 <DialogFooter>
                 <Button
                     variant="text"
-                    onClick={handlePinSet}
+                    onClick={handlePay}
                     className="bg-primary m-auto"
                 >
-                    <span className="text-white font-semibold mx-4">I have my PIN</span>
+                    <span className="text-white font-semibold mx-4">I have my PIN. Proceed to Pay</span>
                 </Button>
                 </DialogFooter>
             </Dialog>

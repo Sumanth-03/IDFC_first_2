@@ -23,11 +23,11 @@ function Product (){
             <div className="w-1/2">
             <h1 className="text-3xl font-semibold text-white m-10">Up to 20% OFF + Extra Rs. 400 OFF</h1>
             <div className="bg-white border-dashed border-2 border-black  m-10 flex flex-row w-80 h-10">
-                <span className="mr-auto text-xl p-2">COUPON3THIS</span>
+                <span className="mr-auto text-xl p-2 -mt-1">COUPON3THIS</span>
                 <img src={copy} className="ml-auto p-2"></img>
             </div>
             <h1 className="text-lg font-bold text-white m-10">Vali till: 24 Mar 2024</h1>
-            <button className="p-5 bg-white text-turtiary font-bold rounded-xl px-10 mx-10 mb-6">REDEEM NOW</button>
+            <button className="p-5 bg-white text-turtiary font-bold rounded-xl px-10 mx-10 mb-6" onClick={()=>{window.open("https://myntra.com")}}>REDEEM NOW</button>
             </div>
             <div className="w-1/2 relative">
             <img src={Delevery} className="absolute bottom-0 h-full" />
