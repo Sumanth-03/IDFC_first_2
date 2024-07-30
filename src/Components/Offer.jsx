@@ -35,6 +35,7 @@ function Offer (){
     return(
         <>
         <Nav></Nav>
+        <div className="overflow-scroll">
         <div className="flex flex-row justify-between mt-20">
             <button onClick={handleClickBack} className="text-lg font-bold bg-transparent flex flex-row m-2" >
             <span className="text-xl mx-2">&lt;</span>
@@ -45,29 +46,29 @@ function Offer (){
             </button>
         </div>
         <main className="text-center max-w-[1200px] m-20">
-            <div className="p-4 m-4 flex flex-row border border-gray-400 rounded-xl shadow-md ">
+            <div className="p-4 m-2 flex flex-row border border-gray-400 rounded-xl shadow-md ">
                 <div className="w-80"><img src={Swiggy} className="h-7 ml-2"></img></div>
                 <sapn className=''>12 Free Deliveries</sapn>
                 <button onClick={()=>handleClick('Swiggy')} className="border border-primary text-primary bg-white font-bold px-6 p-2 rounded-lg ml-auto">
                     Redeem
                 </button>
             </div>
-            <div className="p-4 m-4 flex flex-row border border-gray-400 rounded-xl shadow-md  ">
+            <div className="p-4 m-2 flex flex-row border border-gray-400 rounded-xl shadow-md  ">
             <div className="w-80"><img src={Zepto} className="h-7 ml-2"></img></div>
                 <sapn className=''>3 Month Subscription</sapn>
                 <button className="border border-primary text-primary bg-white font-bold px-6 p-2 rounded-lg ml-auto">Redeem</button>
             </div>
-            <div className="p-4 m-4 flex flex-row border border-gray-400 rounded-xl shadow-md  ">
+            <div className="p-4 m-2 flex flex-row border border-gray-400 rounded-xl shadow-md  ">
             <div className="w-80"><img src={Youtube} className="h-7 ml-2"></img></div>
                 <sapn className=''>2 Month Subscription</sapn>
                 <button className="border border-primary text-primary bg-white font-bold px-6 p-2 rounded-lg ml-auto">Redeem</button>
             </div>
-            <div className="p-4 m-4 flex flex-row border border-gray-400 rounded-xl shadow-md  ">
+            <div className="p-4 m-2 flex flex-row border border-gray-400 rounded-xl shadow-md  ">
             <div className="w-80"><img src={Audible} className="h-7 ml-2"></img></div>
                 <sapn className=''>2 Month Subscription</sapn>
                 <button className="border border-primary text-primary bg-white font-bold px-6 p-2 rounded-lg ml-auto">Redeem</button>
             </div>
-            <div className="p-4 m-4 flex flex-row border border-gray-400 rounded-xl shadow-md  ">
+            <div className="p-4 m-2 flex flex-row border border-gray-400 rounded-xl shadow-md  ">
             <div className="w-80"><img src={Netmeds} className="h-7 ml-2"></img></div>
                 <sapn className=''>6 Free Deliveries</sapn>
                 <button className="border border-primary text-primary bg-white font-bold px-6 p-2 rounded-lg ml-auto">Redeem</button>
@@ -97,7 +98,7 @@ function Offer (){
                 </Button>
                 </DialogFooter>
             </Dialog>
-
+       </div>
         </>
     )
 }
