@@ -102,21 +102,21 @@ function Home (){
         setOpen(false)
         setIsloading(true);
        // navigate('/offers');
-       var min = 100000000000000;
-       var max = 999999999999999999;
-        var rand =  min + (Math.random() * (max-min));
-       let indata = {
-        invoiceNumber: rand,
-        amount: "1",
-        terminalID: "S9FII0",
-        dateAndTime: "2024-07-31 10:17:24",
-        hdnRefNumber: "1210202748731599406",
-        returnURL: "https://idfcdemo2.z29.web.core.windows.net",
-        bins: [411111,401561,525567,428102,440523,549947,515349,439992,444341,653019,52170365,554283,5542830,515349,401613,421366,608116,608118,401138,401347,464163,423537,423579,423610,652350],
-        discount: "20",
-        onlyCardBins: true,
-        backURL: "google.com"
-    }
+    //    var min = 100000000000000;
+    //    var max = 999999999999999999;
+    //     var rand =  min + (Math.random() * (max-min));
+    //    let indata = {
+    //     invoiceNumber: rand,
+    //     amount: "1",
+    //     terminalID: "S9FII0",
+    //     dateAndTime: "2024-07-31 10:17:24",
+    //     hdnRefNumber: "1210202748731599406",
+    //     returnURL: "https://idfcdemo2.z29.web.core.windows.net",
+    //     bins: [411111,401561,525567,428102,440523,549947,515349,439992,444341,653019,52170365,554283,5542830,515349,401613,421366,608116,608118,401138,401347,464163,423537,423579,423610,652350],
+    //     discount: "20",
+    //     onlyCardBins: true,
+    //     backURL: "google.com"
+    // }
 
   //   const requestOptions = {
   //     method: 'POST',
@@ -135,17 +135,20 @@ function Home (){
   //       .then(data => 
   //         {console.log("fd",data)}
   //       );
+   let indata ={
+    test: "1"
+   }
  
 
-        makeSwinkApiCallWithAuth(indata)
+   makeApiCall('validationCheckDemo', indata)
     .then((response) => {
-      console.log(response?.data?.data?.url)
-      if(response?.data?.data?.url){
-        let paymenturl = response.data.data.url;
+      console.log(response?.data?.data?.data)
+      if(response?.data?.data?.data?.url){
+        let paymenturl = response.data.data.data.url;
         setIsloading(false);
         window.location.href = paymenturl;
         }
-      else if(response?.data?.data?.errorstring === "Failed"){
+      else if(response?.data?.data?.data?.errorstring === "Failed"){
         setIsloading(false);
         if(!modal){
           setModal('failed')
