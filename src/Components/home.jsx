@@ -23,7 +23,7 @@ import Lock from '../Assets/Lock.svg'
 import dailogBg from '../Assets/Dailog_bg.svg'
 import play from '../Assets/Play-Pause.svg'
 import "./style.css"
-import { makeApiCallGet, makeApiCall, makeApiCallWithAuth, makeApiGetCallWithAuth } from '../Services/Api' 
+import { makeApiCallGet, makeApiCall, makeApiCallWithAuth, makeApiGetCallWithAuth, makeSwinkApiCallWithAuth } from '../Services/Api' 
 
 function Home (){
     const navigate = useNavigate()
@@ -42,60 +42,133 @@ function Home (){
     const transactionId = queryParams.get('transactionId');
     const amount = queryParams.get('amount');
 
-    if(hdnRefNumber && !modal && !isloading){
-        setIsloading(true);
-        let data ={
-          order_id: hdnRefNumber,
-          razorpay_payment_id: transactionId,
-          razorpay_amount: "1",//amount,
-          offer_id: "179",
-        }
-        makeApiCallWithAuth('checkPaymentStatus', data)
-        .then((response) => {
-          console.log("getpayres",response.data)
-          if(response?.data?.status === 200 || response?.data?.status === 201){
-            //sessionStorage.setItem('coupon',JSON.stringify(response.data.data))
-            //navigate('/redeem')
-            setModal('success');
-            setIsloading(false);
-            navigate('/offers');
-            //setEnabled(true)
-            //setBtntext(true)
+    // if(hdnRefNumber && !modal && !isloading){
+    //     setIsloading(true);
+    //     let data ={
+    //       order_id: hdnRefNumber,
+    //       razorpay_payment_id: transactionId,
+    //       razorpay_amount: "1",//amount,
+    //       offer_id: "179",
+    //     }
+    //     makeApiCallWithAuth('checkPaymentStatus', data)
+    //     .then((response) => {
+    //       console.log("getpayres",response.data)
+    //       if(response?.data?.status === 200 || response?.data?.status === 201){
+    //         //sessionStorage.setItem('coupon',JSON.stringify(response.data.data))
+    //         //navigate('/redeem')
+    //         setModal('success');
+    //         setIsloading(false);
+    //         navigate('/offers');
+    //         //setEnabled(true)
+    //         //setBtntext(true)
           
-          }
-          else{
-            if(!modal){
-            setModal('failed')
-            setErrmessage(response.data?.message)
-            setIsloading(false);
-            }
-          }
+    //       }
+    //       else{
+    //         if(!modal){
+    //         setModal('failed')
+    //         setErrmessage(response.data?.message)
+    //         setIsloading(false);
+    //         }
+    //       }
     
-        })
-        .catch((e) => {console.log("err", e); setModal('failed');setIsloading(false);})
+    //     })
+    //     .catch((e) => {console.log("err", e); setModal('failed');setIsloading(false);})
     
         
-       }
+    //    }
 
-    useEffect(() => {
-        if(!hdnRefNumber){
-        makeApiCallGet()
-        .then((response) => {
-          console.log("tok",response.data)
-          if (response.data?.result) {
-            sessionStorage.setItem('token', response.data?.result)
-          }
+    
+    if(transactionId){
+      navigate('/offers');
+    }
 
-        })
-        .catch((e) => {console.log("err", e); })
-       }
+    // useEffect(() => {
+    //     if(!hdnRefNumber){
+    //     makeApiCallGet()
+    //     .then((response) => {
+    //       console.log("tok",response.data)
+    //       if (response.data?.result) {
+    //         sessionStorage.setItem('token', response.data?.result)
+    //       }
 
-    },[]);
+    //     })
+    //     .catch((e) => {console.log("err", e); })
+    //    }
+
+    // },[]);
 
     const handlePay = ()=>{
         setOpen(false)
         setIsloading(true);
-        navigate('/offers');
+       // navigate('/offers');
+       var min = 100000000000000;
+       var max = 999999999999999999;
+        var rand =  min + (Math.random() * (max-min));
+       let indata = {
+        invoiceNumber: rand,
+        amount: "1",
+        terminalID: "SU3L7D",
+        dateAndTime: "2024-07-31 10:17:24",
+        hdnRefNumber: "1210202748731599406",
+        returnURL: "https://idfcdemo2.z29.web.core.windows.net",
+        bins: [411111],
+        discount: "20",
+        onlyCardBins: true,
+        backURL: "google.com"
+    }
+
+  //   const requestOptions = {
+  //     method: 'POST',
+  //     headers: { 'Content-Type': 'application/json',
+  //           'channel': 14,
+  //           'auth_token': 'FREFA45D$B2#18842765#992',
+        
+  //      },
+  //     body: JSON.stringify(indata)
+  // };
+
+
+
+  //   fetch("https://sandbox.swinkpay-fintech.com/api/v2/plugin/pay", requestOptions)
+  //       .then(response => response.json())
+  //       .then(data => 
+  //         {console.log("fd",data)}
+  //       );
+
+        makeSwinkApiCallWithAuth(indata)
+    .then((response) => {
+      console.log(response?.data?.data?.url)
+      if(response?.data?.data?.url){
+        let paymenturl = response.data.data.url;
+        setIsloading(false);
+        window.location.href = paymenturl;
+        }
+      else if(response?.data?.data?.errorstring === "Failed"){
+        setIsloading(false);
+        if(!modal){
+          setModal('failed')
+          setErrmessage('Something Went Wrong')
+          //setIsloading(false);
+          }
+      
+      }
+      else if(response?.data?.status === 200){
+        sessionStorage.setItem('coupon',JSON.stringify(response.data.data))
+        setIsloading(false);
+        navigate('/redeem')
+      }
+      else{
+        setIsloading(false);
+        if(!modal){
+          setModal('failed')
+          setErrmessage(response.data?.message)
+          //setIsloading(false);
+          }
+      }
+       
+    })
+    .catch((e) => {console.log("err", e);setIsloading(false);})
+   
         
     // makeApiCallWithAuth('validationCheck',{mop: 4, offer_id: "179"})
     // .then((response) => {

@@ -2,6 +2,9 @@ import axios from "axios"
 
 const apiBaseUrl = "https://onerupee-store-api-stage.azurewebsites.net/api"; //"http://localhost:9000/api"; //"https://onerupee-store-api-stage.azurewebsites.net/api";
       //"https://onerupee-store-api-prod.azurewebsites.net/api";
+
+const apiSwinkUrl = "https://sandbox.swinkpay-fintech.com/api/v2/plugin/pay"
+
 const makeApiCall = async (url, data) => {
     let bodyData = {
         url: apiBaseUrl + "/" + url,
@@ -59,6 +62,25 @@ const makeApiCallWithAuth = async (url, data) => {
     return axios(bodyData)
 }
 
+const makeSwinkApiCallWithAuth = async (data) => {
+    //const token = sessionStorage.getItem('token');
+
+    console.log("datxa",data)
+
+    let bodyData = {
+        url: apiSwinkUrl,
+        method: "POST",
+        data: data,
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': '*/*',
+            'channel': '14',
+            'auth_token': 'FREFA45D$B2#18842765#992',
+        },
+    }
+    return axios(bodyData)
+}
 
 
-export { makeApiCall, makeApiCallGet, makeApiGetCallWithAuth, makeApiCallWithAuth}
+
+export { makeApiCall, makeApiCallGet, makeApiGetCallWithAuth, makeApiCallWithAuth, makeSwinkApiCallWithAuth}

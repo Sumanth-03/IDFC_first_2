@@ -13,6 +13,7 @@ import flig from '../Assets/flig.png'
 
 //import swiggy from '../Assets/Swiggy_logo.svg'
 import Delevery from '../Assets/Swiggy_Dlelvery.svg'
+import offerwomen from '../Assets/offerwomen.png'
 import icon from '../Assets/Icon.svg'
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -71,7 +72,11 @@ function Product (){
             <button className="p-5 bg-white text-black font-bold rounded-xl px-10 mx-10 mb-6" onClick={()=>{window.open(links[voucher])}}>REDEEM NOW</button>
             </div>
             <div className="w-1/2 relative">
-            <img src={Delevery} className="absolute bottom-0 h-full" />
+            {(voucher === '0')?
+            <img src={Delevery} className="absolute -bottom-3 h-full" />
+            :
+            <img src={offerwomen} className="absolute -bottom-8 h-full" />
+            }
             <img src={logos[voucher]} className="absolute top-0 right-0" />
             </div>
         </main>
