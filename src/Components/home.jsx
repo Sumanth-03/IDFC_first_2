@@ -111,7 +111,7 @@ function Home (){
         dateAndTime: "2024-07-31 10:17:24",
         hdnRefNumber: "1210202748731599406",
         returnURL: "https://idfcdemo2.z29.web.core.windows.net",
-        bins: [411111],
+        bins: [411111,401561,525567,428102,440523,549947,515349,439992,444341,653019,52170365,554283,5542830,515349,401613,421366,608116,608118,401138,401347,464163,423537,423579,423610,652350],
         discount: "20",
         onlyCardBins: true,
         backURL: "google.com"
