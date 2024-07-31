@@ -17,6 +17,7 @@ import Zepto from '../Assets/Zepto.svg'
 import Youtube from '../Assets/Youtube.svg'
 import Audible from '../Assets/Audible.svg'
 import Netmeds from '../Assets/Netmeds.svg'
+import flig from '../Assets/flig.png'
 import Special from '../Assets/Special.svg'
 import Lock from '../Assets/Lock.svg'
 import dailogBg from '../Assets/Dailog_bg.svg'
@@ -94,39 +95,41 @@ function Home (){
     const handlePay = ()=>{
         setOpen(false)
         setIsloading(true);
-    makeApiCallWithAuth('validationCheck',{mop: 4, offer_id: "179"})
-    .then((response) => {
-      console.log(response?.data?.data?.url)
-      if(response?.data?.data?.url){
-        let paymenturl = response.data.data.url;
-        setIsloading(false);
-        window.location.href = paymenturl;
-        }
-      else if(response?.data?.data?.errorstring === "Failed"){
-        setIsloading(false);
-        if(!modal){
-          setModal('failed')
-          setErrmessage('Something Went Wrong')
-          //setIsloading(false);
-          }
+        navigate('/offers');
+        
+    // makeApiCallWithAuth('validationCheck',{mop: 4, offer_id: "179"})
+    // .then((response) => {
+    //   console.log(response?.data?.data?.url)
+    //   if(response?.data?.data?.url){
+    //     let paymenturl = response.data.data.url;
+    //     setIsloading(false);
+    //     window.location.href = paymenturl;
+    //     }
+    //   else if(response?.data?.data?.errorstring === "Failed"){
+    //     setIsloading(false);
+    //     if(!modal){
+    //       setModal('failed')
+    //       setErrmessage('Something Went Wrong')
+    //       //setIsloading(false);
+    //       }
       
-      }
-      else if(response?.data?.status === 200){
-        sessionStorage.setItem('coupon',JSON.stringify(response.data.data))
-        setIsloading(false);
-        navigate('/redeem')
-      }
-      else{
-        setIsloading(false);
-        if(!modal){
-          setModal('failed')
-          setErrmessage(response.data?.message)
-          //setIsloading(false);
-          }
-      }
+    //   }
+    //   else if(response?.data?.status === 200){
+    //     sessionStorage.setItem('coupon',JSON.stringify(response.data.data))
+    //     setIsloading(false);
+    //     navigate('/redeem')
+    //   }
+    //   else{
+    //     setIsloading(false);
+    //     if(!modal){
+    //       setModal('failed')
+    //       setErrmessage(response.data?.message)
+    //       //setIsloading(false);
+    //       }
+    //   }
        
-    })
-    .catch((e) => {console.log("err", e);setIsloading(false);})
+    // })
+    // .catch((e) => {console.log("err", e);setIsloading(false);})
    
 
     }
@@ -158,29 +161,33 @@ function Home (){
                 </div>
             </div>
 
-            <div className="w-full md:w-1/2 text-center mt-80 md:mt-0">
+            <div className="w-full md:w-1/2 text-center mt-80 md:mt-0 overflow-y-scroll">
                 <h1 className="text-2xl font-bold text-primary m-5">Unlock Your Activation Benefits!</h1>
                 <div className="bg-secondary font-medium text-lg py-4 px-10 m-5 rounded-xl">As per RBI guidelines, activate your card within 1 st 30 days to avoid card closure.</div>
-                <main className="h-screen">
+                <main className="h-screen ">
                     <div className="p-4 m-4 flex flex-row border border-gray-400 rounded-xl shadow-md">
-                        <div className="w-80"><img src={Swiggy} className="h-7 ml-2"></img></div>
-                        <sapn className=''>12 Free Deliveries</sapn>
+                        <div className="w-60"><img src={Swiggy} className="h-7 ml-2"></img></div>
+                        <sapn className=''>Swiggy eVoucher Worth 200 Rs</sapn>
                     </div>
                     <div className="p-4 m-4 flex flex-row border border-gray-400 rounded-xl shadow-md">
-                    <div className="w-80"><img src={Zepto} className="h-7 ml-2"></img></div>
-                        <sapn className=''>3 Month Subscription</sapn>
+                    <div className="w-60"><img src={Zepto} className="h-7 ml-2"></img></div>
+                        <sapn className=''>3 Month Subscription Worth 599 Rs</sapn>
                     </div>
                     <div className="p-4 m-4 flex flex-row border border-gray-400 rounded-xl shadow-md">
-                    <div className="w-80"><img src={Youtube} className="h-7 ml-2"></img></div>
-                        <sapn className=''>2 Month Subscription</sapn>
+                    <div className="w-60"><img src={Youtube} className="h-7 ml-2"></img></div>
+                        <sapn className=''>2 Month Subscription Worth 599 Rs</sapn>
                     </div>
                     <div className="p-4 m-4 flex flex-row border border-gray-400 rounded-xl shadow-md">
-                    <div className="w-80"><img src={Audible} className="h-7 ml-2"></img></div>
-                        <sapn className=''>2 Month Subscription</sapn>
+                    <div className="w-60"><img src={Audible} className="h-7 ml-2"></img></div>
+                        <sapn className=''>2 Month Subscription Worth 303 Rs</sapn>
                     </div>
                     <div className="p-4 m-4 flex flex-row border border-gray-400 rounded-xl shadow-md">
-                    <div className="w-80"><img src={Netmeds} className="h-7 ml-2"></img></div>
-                        <sapn className=''>6 Free Deliveries</sapn>
+                    <div className="w-60"><img src={Netmeds} className="h-7 ml-2"></img></div>
+                        <sapn className=''>6 Free Deliveries Worth 999 Rs</sapn>
+                    </div>
+                    <div className="p-4 m-4 flex flex-row border border-gray-400 rounded-xl shadow-md">
+                    <div className="w-60"><img src={flig} className="h-9 ml-3"></img></div>
+                        <sapn className='mt-1.5'>Zero convenience Fee Flight Booking Worth 900 Rs</sapn>
                     </div>
                     <div className="border border-gray-400 rounded-xl shadow-md p-4 m-4">
                         <div className="flex flex-row items-center justify-center">

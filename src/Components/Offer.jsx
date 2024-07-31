@@ -17,6 +17,7 @@ import Youtube from '../Assets/Youtube.svg'
 import Audible from '../Assets/Audible.svg'
 import Netmeds from '../Assets/Netmeds.svg'
 import Mail from '../Assets/Mail.svg'
+import flig from '../Assets/flig.png'
 
 function Offer (){
     const navigate = useNavigate()
@@ -25,17 +26,26 @@ function Offer (){
 
     const handleOpen = () => setOpen(!open); 
     const handleClick = (data) =>{
-        navigate('/product' ,{state:data})
+        navigate('/product' ,{state:{vouch:data, offertext:offertext}})
     }
     const handleClickBack = () =>{
         navigate('/')
     }
+
+    const offertext =[
+         "Swiggy eVoucher Worth 200 Rs",
+        "3 Month Subscription Worth 599 Rs",
+        "2 Month Subscription Worth 599 Rs",
+        "2 Month Subscription Worth 303 Rs",
+        "6 Free Deliveries Worth 999 Rs",
+        "Zero convenience Fee Flight Booking Worth 900 Rs"
+    ]
    
 
     return(
         <>
         <Nav></Nav>
-        <div className="overflow-y-scroll overflow-x-clip">
+        <div className="overflow-y-scroll overflow-x-clip h-screen">
         <div className="flex flex-row justify-between mt-20">
             <button onClick={handleClickBack} className="text-lg font-bold bg-transparent flex flex-row m-2" >
             <span className="text-xl mx-2">&lt;</span>
@@ -48,34 +58,40 @@ function Offer (){
         <main className="text-center max-w-[1200px] m-20">
             <div className="p-4 m-2 flex flex-row border border-gray-400 rounded-xl shadow-md ">
                 <div className="w-80"><img src={Swiggy} className="h-7 ml-2"></img></div>
-                <sapn className=''>12 Free Deliveries</sapn>
-                <button onClick={()=>handleClick('Swiggy')} className="border border-primary text-primary bg-white font-bold px-6 p-2 rounded-lg ml-auto">
+                <sapn className='mt-2'>Swiggy eVoucher Worth 200 Rs</sapn>
+                <button onClick={()=>handleClick('0')} className="border border-primary text-primary bg-white font-bold px-6 p-2 rounded-lg ml-auto">
                     Redeem
                 </button>
             </div>
             <div className="p-4 m-2 flex flex-row border border-gray-400 rounded-xl shadow-md  ">
             <div className="w-80"><img src={Zepto} className="h-7 ml-2"></img></div>
-                <sapn className=''>3 Month Subscription</sapn>
-                <button className="border border-primary text-primary bg-white font-bold px-6 p-2 rounded-lg ml-auto" onClick={()=>handleClick('Swiggy')}>Redeem</button>
+                <sapn className='mt-2'>3 Month Subscription Worth 599 Rs</sapn>
+                <button className="border border-primary text-primary bg-white font-bold px-6 p-2 rounded-lg ml-auto" onClick={()=>handleClick('1')}>Redeem</button>
             </div>
             <div className="p-4 m-2 flex flex-row border border-gray-400 rounded-xl shadow-md  ">
             <div className="w-80"><img src={Youtube} className="h-7 ml-2"></img></div>
-                <sapn className=''>2 Month Subscription</sapn>
-                <button className="border border-primary text-primary bg-white font-bold px-6 p-2 rounded-lg ml-auto" onClick={()=>handleClick('Swiggy')}>Redeem</button>
+                <sapn className='mt-2'>2 Month Subscription Worth 599 Rs</sapn>
+                <button className="border border-primary text-primary bg-white font-bold px-6 p-2 rounded-lg ml-auto" onClick={()=>handleClick('2')}>Redeem</button>
             </div>
             <div className="p-4 m-2 flex flex-row border border-gray-400 rounded-xl shadow-md  ">
             <div className="w-80"><img src={Audible} className="h-7 ml-2"></img></div>
-                <sapn className=''>2 Month Subscription</sapn>
-                <button className="border border-primary text-primary bg-white font-bold px-6 p-2 rounded-lg ml-auto" onClick={()=>handleClick('Swiggy')}>Redeem</button>
+                <sapn className='mt-2'>2 Month Subscription Worth 303 Rs</sapn>
+                <button className="border border-primary text-primary bg-white font-bold px-6 p-2 rounded-lg ml-auto" onClick={()=>handleClick('3')}>Redeem</button>
             </div>
             <div className="p-4 m-2 flex flex-row border border-gray-400 rounded-xl shadow-md  ">
             <div className="w-80"><img src={Netmeds} className="h-7 ml-2"></img></div>
-                <sapn className=''>6 Free Deliveries</sapn>
-                <button className="border border-primary text-primary bg-white font-bold px-6 p-2 rounded-lg ml-auto" onClick={()=>handleClick('Swiggy')}>Redeem</button>
+                <sapn className='mt-2'>6 Free Deliveries Worth 999 Rs</sapn>
+                <button className="border border-primary text-primary bg-white font-bold px-6 p-2 rounded-lg ml-auto" onClick={()=>handleClick('4')}>Redeem</button>
+            </div>
+            <div className="p-4 m-2 flex flex-row border border-gray-400 rounded-xl shadow-md  ">
+            <div className="w-80"><img src={flig} className="h-9 ml-4"></img></div>
+                <sapn className='mt-2'>Zero convenience Fee Flight Booking Worth 900 Rs</sapn>
+                <button className="border border-primary text-primary bg-white font-bold px-6 p-2 rounded-lg ml-auto" onClick={()=>handleClick('5')}>Redeem</button>
             </div>
             <button className="float-end m-10 p-2 text-white bg-primary rounded-xl text-xl font-bold px-6" onClick={handleOpen}>
                 Send to my email
             </button>
+            <div className="py-20"></div>
         </main>
         <Dialog open={open} handler={handleOpen} size={'xs'} className="flex flex-col justify-center">
                 <div className="w-full m-2">
