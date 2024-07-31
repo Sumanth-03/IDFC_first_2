@@ -43,7 +43,16 @@ function Product (){
         "https://www.netmeds.com",
         "https://www.easemytrip.com"
     ]
-    
+
+    let colors = [
+       {a:"from-[#f46c45]", b:"to-[#eea749]"},
+       {a:"from-[#5618AD]", b:"to-[#7B22FA]"},
+       {a:"from-[#ee0f0f]", b:"to-[#ecb7b7]"},
+       {a:"from-[#ff9900]", b:"to-[#f2f2f2]"},
+       {a:"from-[#00c0ff]", b:"to-[#46d1ff]"},
+       {a:"from-[#f05e5e]", b:"to-[#f08080]"},
+        
+    ]
 
 
 
@@ -51,7 +60,7 @@ function Product (){
         <div className="overflow-y-scroll overflow-x-clip h-screen">
         <Nav></Nav>
         <button className="bg-transparent mx-10 mt-20 p-2" onClick={handleClick}> &lt; Back</button>
-        <main className="rounded-xl p-3 mx-10 flex flex-row " style={{ backgroundImage: "linear-gradient(to top, #f46c45, #eea749)" }}>
+        <main className={`rounded-xl p-3 mx-10 flex flex-row bg-gradient-to-t ${colors[voucher].a} ${colors[voucher].b}`}  >
             <div className="w-1/2">
             <h1 className="text-3xl font-semibold text-white m-10">{state.offertext[voucher]}</h1>
             <div className="bg-white border-dashed border-2 border-black  m-10 flex flex-row w-80 h-10">
@@ -59,7 +68,7 @@ function Product (){
                 <img src={copy} className="ml-auto p-2"></img>
             </div>
             <h1 className="text-lg font-bold text-white m-10">Vali till: 24 Mar 2024</h1>
-            <button className="p-5 bg-white text-turtiary font-bold rounded-xl px-10 mx-10 mb-6" onClick={()=>{window.open(links[voucher])}}>REDEEM NOW</button>
+            <button className="p-5 bg-white text-black font-bold rounded-xl px-10 mx-10 mb-6" onClick={()=>{window.open(links[voucher])}}>REDEEM NOW</button>
             </div>
             <div className="w-1/2 relative">
             <img src={Delevery} className="absolute bottom-0 h-full" />
