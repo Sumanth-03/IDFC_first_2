@@ -20,7 +20,7 @@ import Netmeds from '../Assets/Netmeds.svg'
 import flig from '../Assets/flig.png'
 import Special from '../Assets/Special.svg'
 import Lock from '../Assets/Lock.svg'
-import dailogBg from '../Assets/Dailog_bg.svg'
+import dailogBg from '../Assets/dialogbgnew.jpg'
 import play from '../Assets/Play-Pause.svg'
 import "./style.css"
 import { makeApiCallGet, makeApiCall, makeApiCallWithAuth, makeApiGetCallWithAuth, makeSwinkApiCallWithAuth } from '../Services/Api' 
@@ -77,10 +77,11 @@ function Home (){
         
     //    }
 
-    
+    useEffect(() => {
     if(transactionId){
       navigate('/offers');
     }
+  },[]);
 
     // useEffect(() => {
     //     if(!hdnRefNumber){
@@ -134,6 +135,7 @@ function Home (){
   //       .then(data => 
   //         {console.log("fd",data)}
   //       );
+ 
 
         makeSwinkApiCallWithAuth(indata)
     .then((response) => {
@@ -240,27 +242,27 @@ function Home (){
                 <main className="h-screen ">
                     <div className="p-4 m-4 flex flex-row border border-gray-400 rounded-xl shadow-md">
                         <div className="w-60"><img src={Swiggy} className="h-7 ml-2"></img></div>
-                        <sapn className=''>Swiggy eVoucher Worth 200 Rs</sapn>
+                        <span className=''>Swiggy eVoucher Worth <span className='font-semibold'>₹200</span></span>
                     </div>
                     <div className="p-4 m-4 flex flex-row border border-gray-400 rounded-xl shadow-md">
                     <div className="w-60"><img src={Zepto} className="h-7 ml-2"></img></div>
-                        <sapn className=''>3 Month Subscription Worth 599 Rs</sapn>
+                        <sapn className=''>3 Month Subscription Worth <span className='font-semibold'>₹599</span></sapn>
                     </div>
                     <div className="p-4 m-4 flex flex-row border border-gray-400 rounded-xl shadow-md">
                     <div className="w-60"><img src={Youtube} className="h-7 ml-2"></img></div>
-                        <sapn className=''>2 Month Subscription Worth 599 Rs</sapn>
+                        <sapn className=''>2 Month Subscription Worth <span className='font-semibold'>₹599</span></sapn>
                     </div>
                     <div className="p-4 m-4 flex flex-row border border-gray-400 rounded-xl shadow-md">
                     <div className="w-60"><img src={Audible} className="h-7 ml-2"></img></div>
-                        <sapn className=''>2 Month Subscription Worth 303 Rs</sapn>
+                        <sapn className=''>2 Month Subscription Worth <span className='font-semibold'>₹303</span></sapn>
                     </div>
                     <div className="p-4 m-4 flex flex-row border border-gray-400 rounded-xl shadow-md">
                     <div className="w-60"><img src={Netmeds} className="h-7 ml-2"></img></div>
-                        <sapn className=''>6 Free Deliveries Worth 999 Rs</sapn>
+                        <sapn className=''>6 Free Deliveries Worth <span className='font-semibold'>₹999</span></sapn>
                     </div>
                     <div className="p-4 m-4 flex flex-row border border-gray-400 rounded-xl shadow-md">
                     <div className="w-60"><img src={flig} className="h-9 ml-3"></img></div>
-                        <sapn className='mt-1.5'>Zero convenience Fee Flight Booking Worth 900 Rs</sapn>
+                        <sapn className='mt-1.5'>Zero convenience Fee Flight Booking Worth <span className='font-semibold'>₹900</span></sapn>
                     </div>
                     <div className="border border-gray-400 rounded-xl shadow-md p-4 m-4">
                         <div className="flex flex-row items-center justify-center">

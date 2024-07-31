@@ -18,11 +18,15 @@ import Audible from '../Assets/Audible.svg'
 import Netmeds from '../Assets/Netmeds.svg'
 import Mail from '../Assets/Mail.svg'
 import flig from '../Assets/flig.png'
+import { makeApiCallPost } from "../Services/Api";
 
 function Offer (){
     const navigate = useNavigate()
 
     const [open, setOpen] = React.useState(true);
+    const [sessionId, setSessionId] = React.useState('');
+    const [virtualId, setVirtualId] = React.useState('');
+
 
     const handleOpen = () => setOpen(!open); 
     const handleClick = (data) =>{
@@ -31,6 +35,25 @@ function Offer (){
     const handleClickBack = () =>{
         navigate('/')
     }
+
+    useEffect(() => {
+        if(!sessionId){
+        makeApiCallPost()
+        .then((response) => {
+          if(response.data?.sessionId){
+            setSessionId(response.data?.sessionId)
+            setVirtualId(response.data?.virtualId)
+
+          }
+          
+
+        })
+        .catch((e) => {console.log("err", e); })
+
+        }
+       
+     
+    },[]);
 
     const offertext =[
          "Swiggy eVoucher Worth 200 Rs",
@@ -51,41 +74,41 @@ function Offer (){
             <span className="text-xl mx-2">&lt;</span>
              My Activation Benefits!
             </button>
-            <button className="bg-primary  p-2 rounded-xl text-white font-bold px-6">
+            <button className="bg-primary  p-2 rounded-xl text-white font-bold px-6" onClick={()=>{window.open('https://idfcdemo.cheggout.com/?sessionid='+sessionId+'&virtualid='+virtualId)}}>
               More ways to Save &gt;
             </button>
         </div>
         <main className="text-center max-w-[1200px] m-20">
             <div className="p-4 m-2 flex flex-row border border-gray-400 rounded-xl shadow-md ">
                 <div className="w-80"><img src={Swiggy} className="h-7 ml-2"></img></div>
-                <sapn className='mt-2'>Swiggy eVoucher Worth 200 Rs</sapn>
+                <sapn className='mt-2'>Swiggy eVoucher Worth <span className='font-semibold'>₹200</span></sapn>
                 <button onClick={()=>handleClick('0')} className="border border-primary text-primary bg-white font-bold px-6 p-2 rounded-lg ml-auto">
                     Redeem
                 </button>
             </div>
             <div className="p-4 m-2 flex flex-row border border-gray-400 rounded-xl shadow-md  ">
             <div className="w-80"><img src={Zepto} className="h-7 ml-2"></img></div>
-                <sapn className='mt-2'>3 Month Subscription Worth 599 Rs</sapn>
+                <sapn className='mt-2'>3 Month Subscription Worth <span className='font-semibold'>₹599</span></sapn>
                 <button className="border border-primary text-primary bg-white font-bold px-6 p-2 rounded-lg ml-auto" onClick={()=>handleClick('1')}>Redeem</button>
             </div>
             <div className="p-4 m-2 flex flex-row border border-gray-400 rounded-xl shadow-md  ">
             <div className="w-80"><img src={Youtube} className="h-7 ml-2"></img></div>
-                <sapn className='mt-2'>2 Month Subscription Worth 599 Rs</sapn>
+                <sapn className='mt-2'>2 Month Subscription Worth <span className='font-semibold'>₹599</span></sapn>
                 <button className="border border-primary text-primary bg-white font-bold px-6 p-2 rounded-lg ml-auto" onClick={()=>handleClick('2')}>Redeem</button>
             </div>
             <div className="p-4 m-2 flex flex-row border border-gray-400 rounded-xl shadow-md  ">
             <div className="w-80"><img src={Audible} className="h-7 ml-2"></img></div>
-                <sapn className='mt-2'>2 Month Subscription Worth 303 Rs</sapn>
+                <sapn className='mt-2'>2 Month Subscription Worth <span className='font-semibold'>₹303</span></sapn>
                 <button className="border border-primary text-primary bg-white font-bold px-6 p-2 rounded-lg ml-auto" onClick={()=>handleClick('3')}>Redeem</button>
             </div>
             <div className="p-4 m-2 flex flex-row border border-gray-400 rounded-xl shadow-md  ">
             <div className="w-80"><img src={Netmeds} className="h-7 ml-2"></img></div>
-                <sapn className='mt-2'>6 Free Deliveries Worth 999 Rs</sapn>
+                <sapn className='mt-2'>6 Free Deliveries Worth <span className='font-semibold'>₹999</span></sapn>
                 <button className="border border-primary text-primary bg-white font-bold px-6 p-2 rounded-lg ml-auto" onClick={()=>handleClick('4')}>Redeem</button>
             </div>
             <div className="p-4 m-2 flex flex-row border border-gray-400 rounded-xl shadow-md  ">
             <div className="w-80"><img src={flig} className="h-9 ml-4"></img></div>
-                <sapn className='mt-2'>Zero convenience Fee Flight Booking Worth 900 Rs</sapn>
+                <sapn className='mt-2'>Zero convenience Fee Flight Booking Worth <span className='font-semibold'>₹900</span></sapn>
                 <button className="border border-primary text-primary bg-white font-bold px-6 p-2 rounded-lg ml-auto" onClick={()=>handleClick('5')}>Redeem</button>
             </div>
             <button className="float-end m-10 p-2 text-white bg-primary rounded-xl text-xl font-bold px-6" onClick={handleOpen}>

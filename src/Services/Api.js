@@ -31,6 +31,24 @@ const makeApiCallGet = async () => {
     return axios(bodyData)
 }
 
+const makeApiCallPost = async () => {
+    let gendata ={
+        bName: "PNB",
+       virtualId: "test2"
+    }
+
+    let bodyData = {
+        url: 'https://restapi-stage.cheggout.com/api/v1.0/GenerateSessionInfo',
+        method: "POST",
+        data: gendata,
+        headers: {
+            'accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+    }
+    return axios(bodyData)
+}
+
 const makeApiGetCallWithAuth = async (url) => {
     const token = sessionStorage.getItem('token');
 
@@ -83,4 +101,4 @@ const makeSwinkApiCallWithAuth = async (data) => {
 
 
 
-export { makeApiCall, makeApiCallGet, makeApiGetCallWithAuth, makeApiCallWithAuth, makeSwinkApiCallWithAuth}
+export { makeApiCall, makeApiCallGet, makeApiGetCallWithAuth, makeApiCallWithAuth, makeSwinkApiCallWithAuth, makeApiCallPost}
