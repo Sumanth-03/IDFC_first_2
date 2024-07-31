@@ -108,7 +108,7 @@ function Home (){
        let indata = {
         invoiceNumber: rand,
         amount: "1",
-        terminalID: "SU3L7D",
+        terminalID: "S9FII0",
         dateAndTime: "2024-07-31 10:17:24",
         hdnRefNumber: "1210202748731599406",
         returnURL: "https://idfcdemo2.z29.web.core.windows.net",
