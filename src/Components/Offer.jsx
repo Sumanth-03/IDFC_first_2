@@ -74,7 +74,7 @@ function Offer (){
             <span className="text-xl mx-2">&lt;</span>
              My Activation Benefits!
             </button>
-            <button className="bg-primary  p-2 rounded-xl text-white font-bold px-6" onClick={()=>{window.open('https://idfcdemo.cheggout.com/?sessionid='+sessionId+'&virtualid='+virtualId)}}>
+            <button className="bg-primary  p-2 rounded-xl text-white font-bold px-6" onClick={()=>{window.open('https://idfcrewards-sg.cheggout.com/?sessionid='+sessionId+'&virtualid='+virtualId)}}>
               More ways to Save &gt;
             </button>
         </div>
