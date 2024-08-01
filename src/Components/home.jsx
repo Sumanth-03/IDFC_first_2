@@ -239,7 +239,7 @@ function Home (){
                 </div>
             </div>
 
-            <div className="w-full md:w-1/2 text-center mt-80 md:mt-0 overflow-y-scroll">
+            <div className="w-full md:w-1/2 text-center mt-80 md:mt-0">
                 <h1 className="text-2xl font-bold text-primary m-5">Unlock Your Activation Benefits!</h1>
                 <div className="bg-secondary font-medium text-lg py-4 px-10 m-5 rounded-xl">As per RBI guidelines, activate your card within 1 st 30 days to avoid card closure.</div>
                 <main className="h-screen ">

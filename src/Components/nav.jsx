@@ -12,7 +12,7 @@ function Nav (){
         <nav className="fixed top-0 p-3 bg-primary flex justify-around w-screen z-30">
         <img src={logo} className="mr-auto h-10" ></img>
 
-        <Button
+        {/* <Button
           variant="text"
           color="blue-gray"
           className="flex items-center gap-1 rounded-full py-0.5 pr-2 pl-0.5"
@@ -28,7 +28,7 @@ function Nav (){
             <span>John Doe</span>
             <img src={droupDown}></img>
           </div>
-          </Button>
+          </Button> */}
         </nav>
     )
 }
