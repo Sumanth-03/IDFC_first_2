@@ -9,8 +9,9 @@ import droupDown from '../Assets/DroupDown.svg'
 
 function Nav (){
     return(
-        <nav className="fixed top-0 p-3 bg-primary flex justify-around w-screen z-30">
-        <img src={logo} className="mr-auto h-10" ></img>
+        <nav className="fixed top-0 p-3 bg-primary flex w-screen z-30">
+          <div className="ml-20">
+        <img src={logo} className="mr-auto h-10" ></img></div>
 
         {/* <Button
           variant="text"

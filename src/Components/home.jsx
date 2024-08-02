@@ -224,7 +224,7 @@ function Home (){
             <div className="w-full md:w-1/2 flex flex-col gap-6 md:h-screens">
                 <div className="w-full bg-primary">
                     <img src={Logo} alt='logo' className="h-14"></img>
-                    <h1 className="text-white text-3xl font-body m-10 mx-5 lg:mx-20 min-h-[30vh]">Congratulations! on your brand new <span className="text-secondary">IDFC FIRST</span> Bank Credit Card. Now step into world of benefits!</h1>
+                    <h1 className="text-white text-3xl font-body m-10 mx-5 lg:mx-20 min-h-[30vh]">Congratulations! on your brand new <span className="text-secondary">IDFC FIRST</span> Bank Credit Card. Activate it now to start your rewarding journey with us.</h1>
                 </div>
                 <div className="w-full">
                 <div
@@ -284,14 +284,38 @@ function Home (){
                     <div className="py-20"></div>
                 </main>
             </div>
-            <Dialog open={open} handler={handleOpen} size={'xs'} className="flex flex-col justify-center">
-                <div className="w-full m-2">
+            <Dialog open={open} handler={handleOpen} size={'md'} className="flex flex-col justify-center h-[42rem] overflow-auto">
+                {/* <div className="w-full m-2">
                     <img src={dailogBg} className="w-[95%] rounded-xl m-auto -ml-[0.01%]"></img>
                     <img src={play} className="absolute top-[20%] left-[40%]"></img>
-                </div>
-                <DialogHeader className="m-auto">Have you set your PIN?</DialogHeader>
-                <DialogBody>
-                Watch the video to learn how to set the PIN or by calling our 24-hour helpline number 1860 500 1111
+                </div> */}
+                <DialogHeader className="m-auto">Have you set your Credit Card PIN?</DialogHeader>
+                <DialogBody className="" > 
+
+<span className="">
+Call us on 1860 500 1111 <br/>
+
+Step 1: Generate your Credit Card PIN.<br/>
+
+Press 1 for ‘generate PIN’ option<br/>
+Enter last 4 digits of the credit card number<br/>
+Enter the 3 digit CVV number visible on backside of your card<br/>
+Enter 4 digit PIN of your choice<br/>
+Re-enter 4 digit PIN to confirm<br/>
+PIN generated successfully<br/>
+
+Step 2: Change transaction preferences.<br/>
+
+Press 3 to select ‘Transaction Preferences’ option<br/>
+Enter last 4 digits of the credit card number<br/>
+Press 1 to enable all transaction types<br/>
+Press 2 to enable International transaction types<br/>
+Press 3 to enable Contactless transaction types<br/>
+Press 4 to enable Online transaction types<br/>
+Press 1 to confirm your choice<br/>
+Your choice is recorded successfully
+</span>
+                
                 </DialogBody>
                 <DialogFooter>
                 <Button
@@ -302,6 +326,7 @@ function Home (){
                     <span className="text-white font-semibold mx-4">I have my PIN. Proceed to Pay</span>
                 </Button>
                 </DialogFooter>
+                <div className="py-6"></div>
             </Dialog>
         </div>
     )

@@ -18,6 +18,7 @@ import Audible from '../Assets/Audible.svg'
 import Netmeds from '../Assets/Netmeds.svg'
 import Mail from '../Assets/Mail.svg'
 import flig from '../Assets/flig.png'
+import mailsmall from '../Assets/email.svg'
 import { makeApiCallPost } from "../Services/Api";
 
 function Offer (){
@@ -36,24 +37,24 @@ function Offer (){
         navigate('/')
     }
 
-    useEffect(() => {
-        if(!sessionId){
-        makeApiCallPost()
-        .then((response) => {
-          if(response.data?.sessionId){
-            setSessionId(response.data?.sessionId)
-            setVirtualId(response.data?.virtualId)
+    // useEffect(() => {
+    //     if(!sessionId){
+    //     makeApiCallPost()
+    //     .then((response) => {
+    //       if(response.data?.sessionId){
+    //         setSessionId(response.data?.sessionId)
+    //         setVirtualId(response.data?.virtualId)
 
-          }
+    //       }
           
 
-        })
-        .catch((e) => {console.log("err", e); })
+    //     })
+    //     .catch((e) => {console.log("err", e); })
 
-        }
+    //     }
        
      
-    },[]);
+    // },[]);
 
     const offertext =[
          "Swiggy eVoucher Worth 200 Rs",
@@ -69,13 +70,13 @@ function Offer (){
         <>
         <Nav></Nav>
         <div className="overflow-y-scroll overflow-x-clip h-screen">
-        <div className="flex flex-row justify-between mt-20">
+        <div className="flex flex-row justify-end mt-20 mr-44">
             <button  className="text-lg font-bold bg-transparent flex flex-row m-2" >
             {/* <span className="text-xl mx-2">&lt;</span>
              My Activation Benefits! */}
             </button>
-            <button className="bg-primary  p-2 rounded-xl text-white font-bold px-6" onClick={()=>{window.open('https://idfcrewards-sg.cheggout.com/?sessionid='+sessionId+'&virtualid='+virtualId)}}>
-              More ways to Save &gt;
+            <button className="bg-primary  p-2 rounded-xl text-white font-bold px-6" onClick={()=>{window.open('https://idfcrewards-sg.cheggout.com/')}}>
+              More Ways to Save &gt;
             </button>
         </div>
         <main className="text-center max-w-[1200px] m-20">
@@ -111,8 +112,9 @@ function Offer (){
                 <sapn className='mt-2'>Zero convenience Fee Flight Booking Worth <span className='font-semibold'>₹900</span></sapn>
                 <button className="border border-primary text-primary bg-white font-bold px-6 p-2 rounded-lg ml-auto" onClick={()=>handleClick('5')}>Redeem</button>
             </div>
-            <button className="float-end m-10 p-2 text-white bg-primary rounded-xl text-xl font-bold px-6" onClick={handleOpen}>
-                Send to my email
+            
+            <button className="float-end m-2 p-2 text-white bg-primary rounded-xl text-xl font-bold px-6 flex" onClick={handleOpen}>
+                Send a Copy <img src={mailsmall} className="pl-2 h-8 w-8"></img>
             </button>
             <div className="py-20"></div>
         </main>
