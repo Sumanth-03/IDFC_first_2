@@ -24,7 +24,7 @@ import { makeApiCallPost } from "../Services/Api";
 function Offer (){
     const navigate = useNavigate()
 
-    const [open, setOpen] = React.useState(true);
+    const [open, setOpen] = React.useState(false);
     const [sessionId, setSessionId] = React.useState('');
     const [virtualId, setVirtualId] = React.useState('');
 
@@ -36,6 +36,14 @@ function Offer (){
     const handleClickBack = () =>{
         navigate('/')
     }
+    
+    useEffect(() => {
+    if(!sessionStorage.getItem('pop')){
+    setOpen(true)
+    sessionStorage.setItem('pop', true)
+    }
+    
+    },[]);
 
     // useEffect(() => {
     //     if(!sessionId){
@@ -136,7 +144,7 @@ function Offer (){
                     variant="text"
                     className="bg-primary m-auto"
                 >
-                    <span className="text-white font-medium mx-4" onClick={()=>setOpen(false)}>Send Discout Codes</span>
+                    <span className="text-white font-medium mx-4" onClick={()=>setOpen(false)}>Send Discount Codes</span>
                 </Button>
                 </DialogFooter>
             </Dialog>
