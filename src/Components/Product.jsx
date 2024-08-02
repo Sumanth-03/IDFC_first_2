@@ -60,22 +60,22 @@ function Product (){
     return(
         <div className="overflow-y-scroll overflow-x-clip h-screen">
         <Nav></Nav>
-        <button className="bg-transparent mx-10 mt-20 p-2" onClick={handleClick}> &lt; Back</button>
-        <main className={`rounded-xl p-3 mx-10 flex flex-row bg-gradient-to-t ${colors[voucher].a} ${colors[voucher].b}`}  >
-            <div className="w-1/2">
+        <button className="bg-transparent md:mx-10 mt-20 p-2" onClick={handleClick}> &lt; Back</button>
+        <main className={`rounded-xl p-3 md:mx-10 flex flex-col-reverse md:flex-row bg-gradient-to-t ${colors[voucher].a} ${colors[voucher].b}`}  >
+            <div className="w-full md:w-1/2">
             <h1 className="text-3xl font-semibold text-white m-10">{state.offertext[voucher]}</h1>
-            <div className="bg-white border-dashed border-2 border-black  m-10 flex flex-row w-80 h-10">
+            <div className="bg-white border-dashed border-2 border-black  m-10 flex flex-row w-auto md:w-80 h-10">
                 <span className="mr-auto text-xl p-2 -mt-1">COUPON3THIS</span>
                 <img src={copy} className="ml-auto p-2"></img>
             </div>
             <h1 className="text-lg font-bold text-white m-10">Vali till: 24 Mar 2024</h1>
             <button className="p-5 bg-white text-black font-bold rounded-xl px-10 mx-10 mb-6" onClick={()=>{window.open(links[voucher])}}>REDEEM NOW</button>
             </div>
-            <div className="w-1/2 relative">
+            <div className="w-full md:w-1/2 relative min-h-60">
             {(voucher === '0')?
-            <img src={Delevery} className="absolute -bottom-3 h-full" />
+            <img src={Delevery} className="absolute -bottom-3 min-h-32 h-full" />
             :
-            <img src={offerwomen} className="absolute -bottom-8 h-full" />
+            <img src={offerwomen} className="absolute -bottom-8 min-h-32 h-full" />
             }
             <img src={logos[voucher]} className="absolute top-0 right-0" />
             </div>
@@ -83,13 +83,13 @@ function Product (){
 
         <section className="flex md:flex-row flex-col">
             
-            <div className="w-full md:w-1/2 m-10 p-5 flex flex-col shadow-lg">
+            <div className="md:w-1/2 md:m-10 p-5 flex flex-col shadow-lg">
                 <h1 className="text-2xl font-bold">Order Details</h1>
                 <span className="pt-2">Availed for 1 pts</span>
                 <span>Order ID : 22336070437</span>
                 <span>1 Nov, 12:05 PM</span>
             </div>
-            <div className="w-full md:w-1/2 m-10 p-5 shadow-lg">
+            <div className="md:w-1/2 md:m-10 p-5 shadow-lg">
             <h1 className="text-2xl font-bold">Quick Links</h1>
                 <div className="flex flex-row">
                     <img src={icon} ></img>

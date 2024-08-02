@@ -70,44 +70,45 @@ function Offer (){
         <>
         <Nav></Nav>
         <div className="overflow-y-scroll overflow-x-clip h-screen">
-        <div className="flex flex-row justify-end mt-20 mr-44">
+        <div className="flex flex-row justify-end mt-20 mr-auto max-w-[1200px] md:m-20">
             <button  className="text-lg font-bold bg-transparent flex flex-row m-2" >
             {/* <span className="text-xl mx-2">&lt;</span>
              My Activation Benefits! */}
             </button>
-            <button className="bg-primary  p-2 rounded-xl text-white font-bold px-6" onClick={()=>{window.open('https://idfcrewards-sg.cheggout.com/')}}>
+            <button className="bg-primary  p-2 rounded-xl text-white font-bold px-6 mr-2" onClick={()=>{window.open('https://idfcrewards-sg.cheggout.com/')}}>
               More Ways to Save &gt;
             </button>
+            
         </div>
-        <main className="text-center max-w-[1200px] m-20">
-            <div className="p-4 m-2 flex flex-row border border-gray-400 rounded-xl shadow-md ">
+        <main className="text-center max-w-[1200px] md:m-20">
+            <div className="p-4 m-2 flex flex-col gap-2 md:flex-row border border-gray-400 rounded-xl shadow-md ">
                 <div className="w-80"><img src={Swiggy} className="h-7 ml-2"></img></div>
                 <sapn className='mt-2'>Swiggy eVoucher Worth <span className='font-semibold'>₹200</span></sapn>
                 <button onClick={()=>handleClick('0')} className="border border-primary text-primary bg-white font-bold px-6 p-2 rounded-lg ml-auto">
                     Redeem
                 </button>
             </div>
-            <div className="p-4 m-2 flex flex-row border border-gray-400 rounded-xl shadow-md  ">
+            <div className="p-4 m-2 flex flex-col gap-2 md:flex-row border border-gray-400 rounded-xl shadow-md  ">
             <div className="w-80"><img src={Zepto} className="h-7 ml-2"></img></div>
                 <sapn className='mt-2'>3 Month Subscription Worth <span className='font-semibold'>₹599</span></sapn>
                 <button className="border border-primary text-primary bg-white font-bold px-6 p-2 rounded-lg ml-auto" onClick={()=>handleClick('1')}>Redeem</button>
             </div>
-            <div className="p-4 m-2 flex flex-row border border-gray-400 rounded-xl shadow-md  ">
+            <div className="p-4 m-2 flex flex-col gap-2 md:flex-row border border-gray-400 rounded-xl shadow-md  ">
             <div className="w-80"><img src={Youtube} className="h-7 ml-2"></img></div>
                 <sapn className='mt-2'>2 Month Subscription Worth <span className='font-semibold'>₹599</span></sapn>
                 <button className="border border-primary text-primary bg-white font-bold px-6 p-2 rounded-lg ml-auto" onClick={()=>handleClick('2')}>Redeem</button>
             </div>
-            <div className="p-4 m-2 flex flex-row border border-gray-400 rounded-xl shadow-md  ">
+            <div className="p-4 m-2 flex flex-col gap-2 md:flex-row border border-gray-400 rounded-xl shadow-md  ">
             <div className="w-80"><img src={Audible} className="h-7 ml-2"></img></div>
                 <sapn className='mt-2'>2 Month Subscription Worth <span className='font-semibold'>₹303</span></sapn>
                 <button className="border border-primary text-primary bg-white font-bold px-6 p-2 rounded-lg ml-auto" onClick={()=>handleClick('3')}>Redeem</button>
             </div>
-            <div className="p-4 m-2 flex flex-row border border-gray-400 rounded-xl shadow-md  ">
+            <div className="p-4 m-2 flex flex-col gap-2 md:flex-row border border-gray-400 rounded-xl shadow-md  ">
             <div className="w-80"><img src={Netmeds} className="h-7 ml-2"></img></div>
                 <sapn className='mt-2'>6 Free Deliveries Worth <span className='font-semibold'>₹999</span></sapn>
                 <button className="border border-primary text-primary bg-white font-bold px-6 p-2 rounded-lg ml-auto" onClick={()=>handleClick('4')}>Redeem</button>
             </div>
-            <div className="p-4 m-2 flex flex-row border border-gray-400 rounded-xl shadow-md  ">
+            <div className="p-4 m-2 flex flex-col gap-2 md:flex-row border border-gray-400 rounded-xl shadow-md  ">
             <div className="w-80"><img src={flig} className="h-9 ml-4"></img></div>
                 <sapn className='mt-2'>Zero convenience Fee Flight Booking Worth <span className='font-semibold'>₹900</span></sapn>
                 <button className="border border-primary text-primary bg-white font-bold px-6 p-2 rounded-lg ml-auto" onClick={()=>handleClick('5')}>Redeem</button>
