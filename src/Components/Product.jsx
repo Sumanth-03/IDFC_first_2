@@ -18,7 +18,7 @@ import icon from '../Assets/Icon.svg'
 import { useLocation, useNavigate } from "react-router-dom";
 
 function Product (){
-
+    const coupon = 'COUPON3THIS'
     const navigate = useNavigate();
     function handleClick () {
         navigate('/offers')
@@ -54,6 +54,9 @@ function Product (){
        {a:"from-[#f05e5e]", b:"to-[#f08080]"},
         
     ]
+    const copytext = () => {
+        navigator.clipboard.writeText(coupon)
+    }
 
 
 
@@ -65,8 +68,8 @@ function Product (){
             <div className="w-full md:w-1/2">
             <h1 className="text-3xl font-semibold text-white m-10">{state.offertext[voucher]}</h1>
             <div className="bg-white border-dashed border-2 border-black  m-10 flex flex-row w-auto md:w-80 h-10">
-                <span className="mr-auto text-xl p-2 -mt-1">COUPON3THIS</span>
-                <img src={copy} className="ml-auto p-2"></img>
+                <span className="mr-auto text-xl p-2 -mt-1">{coupon}</span>
+                <img src={copy} className="ml-auto p-2 cursor-pointer hover:shadow-xl hover:border-2"  onClick={copytext}></img>
             </div>
             <h1 className="text-lg font-bold text-white m-10">Vali till: 24 Mar 2024</h1>
             <button className="p-5 bg-white text-black font-bold rounded-xl px-10 mx-10 mb-6" onClick={()=>{window.open(links[voucher])}}>REDEEM NOW</button>

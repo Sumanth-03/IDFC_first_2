@@ -9,8 +9,8 @@ import droupDown from '../Assets/DroupDown.svg'
 
 function Nav (){
     return(
-        <nav className="fixed top-0 p-3 bg-primary flex w-screen z-30">
-          <div className="md:ml-20">
+        <nav className="fixed top-0 p-3 bg-primary flex w-screen z-30 md:px-10">
+          <div className="">
         <img src={logo} className="mr-auto h-10" ></img></div>
 
         {/* <Button
@@ -30,6 +30,9 @@ function Nav (){
             <img src={droupDown}></img>
           </div>
           </Button> */}
+          <button className="bg-white  p-2 rounded-xl text-primary font-bold px-6 ml-auto" onClick={()=>{window.open('https://idfcrewards-sg.cheggout.com/')}}>
+              More Ways to Save &gt;
+            </button>
         </nav>
     )
 }

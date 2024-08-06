@@ -7,7 +7,8 @@ import {
     DialogHeader,
     DialogBody,
     DialogFooter,
-    Spinner
+    Spinner,
+    IconButton,
   } from "@material-tailwind/react";
 
 import Logo from '../Assets/Logo.svg'
@@ -22,6 +23,7 @@ import Special from '../Assets/Special.svg'
 import Lock from '../Assets/Lock.svg'
 import dailogBg from '../Assets/dialogbgnew.jpg'
 import play from '../Assets/Play-Pause.svg'
+import dailogImg from '../Assets/Dailog_img.png'
 import "./style.css"
 import { makeApiCallGet, makeApiCall, makeApiCallWithAuth, makeApiGetCallWithAuth, makeSwinkApiCallWithAuth } from '../Services/Api' 
 
@@ -35,7 +37,7 @@ function Home (){
     const [errmessage, setErrmessage] = useState('')
 
     
-    const handleOpen = () => setOpen(!open); 
+    const handleOpen = () => setOpen((open)=>!open); 
 
     const queryParams = new URLSearchParams(window.location.search);
     const hdnRefNumber = queryParams.get('hdnRefNumber');
@@ -224,7 +226,7 @@ function Home (){
             <div className="w-full md:w-1/2 flex flex-col gap-6 md:h-screens">
                 <div className="w-full bg-primary">
                     <img src={Logo} alt='logo' className="h-14"></img>
-                    <h1 className="text-white text-3xl font-body m-10 mx-5 lg:mx-20 min-h-[30vh]">Congratulations! on your brand new <span className="text-secondary">IDFC FIRST</span> Bank Credit Card. Activate it now to start your rewarding journey with us.</h1>
+                    <h1 className="text-white text-3xl font-body m-10 mx-5 lg:mx-20 min-h-[30vh]">Congratulations on your brand new <span className="text-secondary">IDFC FIRST</span> Bank Credit Card! Activate it now to start your rewarding journey with us.</h1>
                 </div>
                 <div className="w-full">
                 <div
@@ -240,93 +242,113 @@ function Home (){
             </div>
 
             <div className="w-full md:w-1/2 text-center mt-80 md:mt-0">
-                <h1 className="text-2xl font-bold text-primary m-5">Unlock Your Activation Benefits!</h1>
-                <div className="bg-secondary font-medium text-lg py-4 px-10 m-5 rounded-xl">As per RBI guidelines, activate your card within 1 st 30 days to avoid card closure.</div>
+                <h1 className="text-2xl font-bold text-primary m-5">Unlock Your Exclusive Benefits!</h1>
+                <div className="bg-secondary font-medium text-lg py-4 px-10 m-5 rounded-xl">As per RBI guidelines, please activate your card within 30 days of account opening to avoid card closure. Here are some exclusive benefits that come with your card activation:</div>
                 <main className="h-screen ">
                     <div className="p-4 m-4 flex flex-row border border-gray-400 rounded-xl shadow-md">
-                        <div className="w-60"><img src={Swiggy} className="h-7 ml-2"></img></div>
-                        <span className=''>Swiggy eVoucher Worth <span className='font-semibold'>₹200</span></span>
-                    </div>
-                    <div className="p-4 m-4 flex flex-row border border-gray-400 rounded-xl shadow-md">
                     <div className="w-60"><img src={Zepto} className="h-7 ml-2"></img></div>
-                        <sapn className=''>3 Month Subscription Worth <span className='font-semibold'>₹599</span></sapn>
+                        <sapn className=''>3 Month Subscription Worth
+                        <span className='font-semibold'>₹500</span></sapn>
                     </div>
                     <div className="p-4 m-4 flex flex-row border border-gray-400 rounded-xl shadow-md">
                     <div className="w-60"><img src={Youtube} className="h-7 ml-2"></img></div>
-                        <sapn className=''>2 Month Subscription Worth <span className='font-semibold'>₹599</span></sapn>
+                        <sapn className=''>2 Month Subscription Worth <span className='font-semibold'>₹600</span></sapn>
                     </div>
                     <div className="p-4 m-4 flex flex-row border border-gray-400 rounded-xl shadow-md">
                     <div className="w-60"><img src={Audible} className="h-7 ml-2"></img></div>
-                        <sapn className=''>2 Month Subscription Worth <span className='font-semibold'>₹303</span></sapn>
+                        <sapn className=''>2 Month Subscription Worth <span className='font-semibold'>₹500</span></sapn>
                     </div>
                     <div className="p-4 m-4 flex flex-row border border-gray-400 rounded-xl shadow-md">
                     <div className="w-60"><img src={Netmeds} className="h-7 ml-2"></img></div>
-                        <sapn className=''>6 Free Deliveries Worth <span className='font-semibold'>₹999</span></sapn>
+                        <sapn className=''>6 Free Deliveries Worth <span className='font-semibold'>₹1000</span></sapn>
                     </div>
                     <div className="p-4 m-4 flex flex-row border border-gray-400 rounded-xl shadow-md">
                     <div className="w-60"><img src={flig} className="h-9 ml-3"></img></div>
-                        <sapn className='mt-1.5'>Zero convenience Fee Flight Booking Worth <span className='font-semibold'>₹900</span></sapn>
+                        <sapn className='mt-1.5'>Zero convenience Fee Flight Booking Worth <span className='font-semibold'>₹1000</span></sapn>
                     </div>
                     <div className="border border-gray-400 rounded-xl shadow-md p-4 m-4">
                         <div className="flex flex-row items-center justify-center">
-                        <h1 className="text-2xl">Benefits worth ₹ 3,600 </h1><img src={Special} className="h-5"></img>
+                        <h1 className="text-2xl">Total Benefits Worth ₹3600 (Welcome Offer)</h1><img src={Special} className="h-5"></img>
                         </div>
                         <p className="font-light text-xs my-4">
-                            This special package is a token of our gratitude for becoming a IDFC cardholder. 
-                            Simply activate your card and make a payment of Rs. 1 to gain access to exclusive 
-                            benefits from the premium brands.
+                        Unlock exclusive benefits with your IDFC card! As an IDFC FIRST bank cardholder, simply activate your card for 
+                        online payments and make a payment of just ₹1 to gain access to great offers from premium brands. Enjoy these 
+                        exclusive perks and elevate your experience today!
                         </p>
                         <button className="bg-primary rounded-xl px-6 p-2 flex flex-row text-white m-auto" onClick={handleOpen}>
                             <img src={Lock} className="h-5 mr-2"></img>
-                              Unlock for only ₹ 1
+                            Unlock all for Only ₹1!
                         </button>
                     </div>
                     <div className="py-20"></div>
                 </main>
             </div>
-            <Dialog open={open} handler={handleOpen} size={'md'} className="flex flex-col justify-center h-[42rem] overflow-auto">
+            <Dialog open={open} handler={handleOpen} size={'xl'} className="flex flex-row justify-center h-[42rem] overflow-auto">
                 {/* <div className="w-full m-2">
                     <img src={dailogBg} className="w-[95%] rounded-xl m-auto -ml-[0.01%]"></img>
                     <img src={play} className="absolute top-[20%] left-[40%]"></img>
                 </div> */}
-                <DialogHeader className="m-auto">Have you set your Credit Card PIN?</DialogHeader>
-                <DialogBody className="" > 
-
-<span className="">
-Call us on 1860 500 1111 <br/>
-
-Step 1: Generate your Credit Card PIN.<br/>
-
-Press 1 for ‘generate PIN’ option<br/>
-Enter last 4 digits of the credit card number<br/>
-Enter the 3 digit CVV number visible on backside of your card<br/>
-Enter 4 digit PIN of your choice<br/>
-Re-enter 4 digit PIN to confirm<br/>
-PIN generated successfully<br/>
-
-Step 2: Change transaction preferences.<br/>
-
-Press 3 to select ‘Transaction Preferences’ option<br/>
-Enter last 4 digits of the credit card number<br/>
-Press 1 to enable all transaction types<br/>
-Press 2 to enable International transaction types<br/>
-Press 3 to enable Contactless transaction types<br/>
-Press 4 to enable Online transaction types<br/>
-Press 1 to confirm your choice<br/>
-Your choice is recorded successfully
-</span>
+                <div className="w-2/5 flex items-center">
+                    <img src={dailogImg}></img>
+                </div>
                 
+                <div className="w-3/5 px-2 p-2 flex flex-col">
+                <IconButton
+                 color="blue-gray"
+                 size="sm"
+                 variant="text"
+                 className="ml-auto p-4"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                        className="h-10 w-10"
+                        onClick={handleOpen}
+            >
+                    <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M6 18L18 6M6 6l12 12"
+                    />
+                    </svg>
+                </IconButton>
+                <div className="rounded-lg shadow-lg m-4">
+                <DialogHeader className="m-auto mt-2">Have you activated your card for online transactions?</DialogHeader>
+                
+                <DialogBody className="!m-0" > 
+                    <p className="p-2">As per RBI guidelines, your IDFC card should be enabled for online transactions</p>
+                    <p className="my-4 p-2">Please visit [this link]( <a className="text-blue-500 cursor-pointer">https://my.idfcfirstbank.com/manageCreditcard</a> ) to set your card control and enable online transactions</p>
+                    <p className="my-4 p-2"> Or call our toll free number <span className="text-blue-500 cursor-pointer">1800 10 888</span> to activate online transactions</p>
+                    <p className="my-4 p-2 text-black bg-gray-100 rounded-lg"><span className="font-bold text-black">Note:</span> If you haven't activated it yet, please do so and come back. We are holding your offer for the next 30 minutes</p>
+                    <p className="my-4 text-center text-xl text-black font-semibold mt-6">Have you activated?</p>
+                    <div className="flex flex-row justify-around mb-0">
+                        <span>No</span>
+                        <span>Yes</span>
+                    </div>
                 </DialogBody>
-                <DialogFooter>
+                <DialogFooter className="flex flex-row justify-around">
+                    
                 <Button
                     variant="text"
                     onClick={handlePay}
                     className="bg-primary m-auto"
                 >
-                    <span className="text-white font-semibold mx-4">I have my PIN. Proceed to Pay</span>
+                    <span className="text-white font-semibold mx-4">Activate</span>
+                </Button>
+                <Button
+                    variant="text"
+                    onClick={handlePay}
+                    className="bg-yellow-600  m-auto"
+                >
+                    <span className="text-black font-bold mx-4">Unlock My Offers</span>
                 </Button>
                 </DialogFooter>
-                <div className="py-6"></div>
+                </div>
+                </div>
+            
             </Dialog>
         </div>
     )
