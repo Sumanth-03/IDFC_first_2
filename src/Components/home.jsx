@@ -23,7 +23,8 @@ import Special from '../Assets/Special.svg'
 import Lock from '../Assets/Lock.svg'
 import dailogBg from '../Assets/dialogbgnew.jpg'
 import play from '../Assets/Play-Pause.svg'
-import dailogImg from '../Assets/Dailog_img.png'
+import dailogImg from '../Assets/Dailog_img.svg'
+import QRcode from '../Assets/QRcode.svg'
 import "./style.css"
 import { makeApiCallGet, makeApiCall, makeApiCallWithAuth, makeApiGetCallWithAuth, makeSwinkApiCallWithAuth } from '../Services/Api' 
 
@@ -35,6 +36,7 @@ function Home (){
     const [isloading, setIsloading] = useState(false);
     const [modal, setModal] = useState('')
     const [errmessage, setErrmessage] = useState('')
+    const [activate, setActivate] = useState(false)
 
     
     const handleOpen = () => setOpen((open)=>!open); 
@@ -101,8 +103,12 @@ function Home (){
     // },[]);
 
     const handlePay = ()=>{
+        if(!activate){
+            return setActivate(true)
+        }
         setOpen(false)
         setIsloading(true);
+        setActivate(false)
        // navigate('/offers');
     //    var min = 100000000000000;
     //    var max = 999999999999999999;
@@ -211,7 +217,7 @@ function Home (){
     // })
     // .catch((e) => {console.log("err", e);setIsloading(false);})
    
-
+    
     }
 
 
@@ -235,7 +241,7 @@ function Home (){
                 <img
                     src={Poster}
                     alt="poster"
-                    className="absolute -top-32 pr-1"
+                    className="absolute -top-14 -md:-top-28 lg:-top-28  pr-1"
                 />
                  </div>
                 </div>
@@ -268,7 +274,7 @@ function Home (){
                     </div>
                     <div className="border border-gray-400 rounded-xl shadow-md p-4 m-4">
                         <div className="flex flex-row items-center justify-center">
-                        <h1 className="text-2xl">Total Benefits Worth ₹3600 (Welcome Offer)</h1><img src={Special} className="h-5"></img>
+                        <h1 className="text-2xl">Total Benefits Worth ₹3600</h1><img src={Special} className="h-5"></img>
                         </div>
                         <p className="font-light text-xs my-4">
                         Unlock exclusive benefits with your IDFC card! As an IDFC FIRST bank cardholder, simply activate your card for 
@@ -283,16 +289,16 @@ function Home (){
                     <div className="py-20"></div>
                 </main>
             </div>
-            <Dialog open={open} handler={handleOpen} size={'xl'} className="flex flex-row justify-center h-[42rem] overflow-auto">
+            <Dialog open={open} handler={handleOpen} size={'xl'} className="flex flex-col md:flex-row justify-center h-[42rem] overflow-auto">
                 {/* <div className="w-full m-2">
                     <img src={dailogBg} className="w-[95%] rounded-xl m-auto -ml-[0.01%]"></img>
                     <img src={play} className="absolute top-[20%] left-[40%]"></img>
                 </div> */}
-                <div className="w-2/5 flex items-center">
-                    <img src={dailogImg}></img>
+                <div className="md:w-2/5 flex items-center">
+                    <img src={dailogImg} className="object-cover"></img>
                 </div>
                 
-                <div className="w-3/5 px-2 p-2 flex flex-col">
+                <div className="md:w-3/5 px-2 p-2 flex flex-col">
                 <IconButton
                  color="blue-gray"
                  size="sm"
@@ -317,34 +323,44 @@ function Home (){
                 </IconButton>
                 <div className="rounded-lg shadow-lg m-4">
                 <DialogHeader className="m-auto mt-2">Have you activated your card for online transactions?</DialogHeader>
-                
-                <DialogBody className="!m-0" > 
-                    <p className="p-2">As per RBI guidelines, your IDFC card should be enabled for online transactions</p>
-                    <p className="my-4 p-2">Please visit [this link]( <a className="text-blue-500 cursor-pointer">https://my.idfcfirstbank.com/manageCreditcard</a> ) to set your card control and enable online transactions</p>
-                    <p className="my-4 p-2"> Or call our toll free number <span className="text-blue-500 cursor-pointer">1800 10 888</span> to activate online transactions</p>
-                    <p className="my-4 p-2 text-black bg-gray-100 rounded-lg"><span className="font-bold text-black">Note:</span> If you haven't activated it yet, please do so and come back. We are holding your offer for the next 30 minutes</p>
-                    <p className="my-4 text-center text-xl text-black font-semibold mt-6">Have you activated?</p>
-                    <div className="flex flex-row justify-around mb-0">
-                        <span>No</span>
-                        <span>Yes</span>
-                    </div>
-                </DialogBody>
+                {activate &&
+                    <DialogBody className="!m-0" > 
+                        <div className="flex flex-col mb-0">
+                            <p className="m-2">1. Download IDFC Bank APP</p>
+                            <div className="flex flex-row items-center w-[80%] max-w-96 p-1 border border-gray-400">
+                                <img src={QRcode} className="w-24"></img>
+                                <span className="p-6 text-center text-sm">Scan QR to Download IDFC Bank App</span>
+                            </div>
+                            <p className="m-2">2. Select Manage Card to enable online transaction preferences</p>
+                            <p className="m-2">3. You can also call us at 1800 10 888 to complete card activation, PIN setup, and transaction preferences.</p>
+                        </div>
+                    </DialogBody>
+                }
                 <DialogFooter className="flex flex-row justify-around">
-                    
-                <Button
-                    variant="text"
-                    onClick={handlePay}
-                    className="bg-primary m-auto"
-                >
-                    <span className="text-white font-semibold mx-4">Activate</span>
-                </Button>
-                <Button
+                <div className="flex md:flex-col items-center gap-2">
+                    <span>Yes</span>
+                    <Button
                     variant="text"
                     onClick={handlePay}
                     className="bg-yellow-600  m-auto"
                 >
                     <span className="text-black font-bold mx-4">Unlock My Offers</span>
+                    </Button>
+                </div>
+                
+                <div className="flex md:flex-col items-center gap-2">
+                <span>No</span>
+                <Button
+                    variant="text"
+                    onClick={handlePay}
+                    className="bg-primary m-auto disabled:bg-gray-400"
+                    disabled={activate}
+
+                >
+                    <span className="text-white font-semibold mx-4">Activate</span>
                 </Button>
+                </div>
+                
                 </DialogFooter>
                 </div>
                 </div>
