@@ -289,7 +289,7 @@ function Home (){
                     <div className="py-20"></div>
                 </main>
             </div>
-            <Dialog open={open} handler={handleOpen} size={'xl'} className="flex flex-col md:flex-row justify-center h-[42rem] overflow-auto">
+            <Dialog open={open} handler={handleOpen} size={'xl'} className="flex flex-col md:flex-row justify-center h-[35rem] overflow-auto">
                 {/* <div className="w-full m-2">
                     <img src={dailogBg} className="w-[95%] rounded-xl m-auto -ml-[0.01%]"></img>
                     <img src={play} className="absolute top-[20%] left-[40%]"></img>
@@ -344,7 +344,7 @@ function Home (){
                     onClick={handlePay}
                     className="bg-yellow-600  m-auto"
                 >
-                    <span className="text-black font-bold mx-4">Unlock My Offers</span>
+                    <span className="text-black font-bold mx-4">Unlock all for Only ₹1</span>
                     </Button>
                 </div>
                 
