@@ -113,7 +113,7 @@ function Offer (){
                 <button className="border border-primary text-primary bg-white font-bold px-6 p-2 rounded-lg ml-auto" onClick={()=>handleClick('5')}>Redeem</button>
             </div>
             
-            <button className="ml-auto m-2 p-2 text-white bg-primary rounded-xl text-xl font-bold px-6 flex md:mr-[7.5%] mt-20" onClick={handleOpen}>
+            <button className="ml-auto m-2 p-2 text-white bg-primary rounded-xl text-xl font-bold px-6 flex mx-auto md:mr-[7.5%] mt-20" onClick={handleOpen}>
                 Send to my email 
             </button>
             <div className="py-20"></div>

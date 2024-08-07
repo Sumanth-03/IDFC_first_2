@@ -232,7 +232,7 @@ function Home (){
             <div className="w-full md:w-1/2 flex flex-col gap-6 md:h-screens">
                 <div className="w-full bg-primary">
                     <img src={Logo} alt='logo' className="h-14"></img>
-                    <h1 className="text-white text-3xl font-body m-10 mx-5 lg:mx-20 min-h-[30vh]">Congratulations on your brand new <span className="text-secondary">IDFC FIRST</span> Bank Credit Card! Activate it now to start your rewarding journey with us.</h1>
+                    <h1 className="text-white text-3xl font-body m-3 md:m-10 mx-5 lg:mx-20 min-h-[30vh] pt-[8%]">Congratulations on your brand new <span className="text-secondary">IDFC FIRST</span> Bank Credit Card! Activate it now to start your rewarding journey with us.</h1>
                 </div>
                 <div className="w-full">
                 <div
@@ -247,7 +247,7 @@ function Home (){
                 </div>
             </div>
 
-            <div className="w-full md:w-1/2 text-center mt-80 md:mt-0">
+            <div className="w-full md:w-1/2 text-center rounded-t-2xl z-10  mt-[54vw] md:mt-0 bg-white ">
                 <h1 className="text-2xl font-bold text-primary m-5">Unlock Your Exclusive Benefits!</h1>
                 <div className="bg-secondary font-medium text-lg py-4 px-10 m-5 rounded-xl">As per RBI guidelines, please activate your card within 30 days of account opening to avoid card closure. Here are some exclusive benefits that come with your card activation:</div>
                 <main className="h-screen ">
@@ -286,7 +286,7 @@ function Home (){
                             Unlock all for Only ₹1!
                         </button>
                     </div>
-                    <div className="py-20"></div>
+                    <div className="py-20 z-10 bg-white"></div>
                 </main>
             </div>
             <Dialog open={open} handler={handleOpen} size={'xl'} className="flex flex-col md:flex-row justify-center h-[35rem] overflow-auto">
@@ -336,7 +336,7 @@ function Home (){
                         </div>
                     </DialogBody>
                 }
-                <DialogFooter className="flex flex-row justify-around">
+                <DialogFooter className="flex flex-col md:flex-row justify-around gap-4">
                 <div className="flex md:flex-col items-center gap-2">
                     <span>Yes</span>
                     <Button
