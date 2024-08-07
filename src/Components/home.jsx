@@ -102,7 +102,7 @@ function Home (){
 
     // },[]);
 
-    const handlePay = ()=>{
+    const handlePay = (activate)=>{
         if(!activate){
             return setActivate(true)
         }
@@ -352,7 +352,7 @@ function Home (){
                 <span>No</span>
                 <Button
                     variant="text"
-                    onClick={handlePay}
+                    onClick={()=>handlePay(activate)}
                     className="bg-primary m-auto disabled:bg-gray-400"
                     disabled={activate}
 
